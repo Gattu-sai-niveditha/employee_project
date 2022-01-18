@@ -1,0 +1,136 @@
+<mvc:View
+    controllerName="EmployeeProject.employeeproject.controller.MyView"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+>
+       <App id="app">
+            
+                <Page id="page" >
+                    <VBox id="_IDGenVBox1" class="sapUiSmallMargin">
+                   <f:SimpleForm id="SimpleForm1"  title="Employee Details" editable="true" singleContainerFullSize="true"
+                    layout="ResponsiveGridLayout"
+                    labelSpanXL="4"
+                    labelSpanL="4"
+                    labelSpanM="12"
+                    labelSpanS="12"
+                    adjustLabelSpan="false"
+                    emptySpanXL="0"
+                    emptySpanL="0"
+                    emptySpanM="0"
+                    emptySpanS="0"
+                    columnsXL="2"
+                    columnsL="2"
+                    columnsM="2" >
+                  <core:Title id="ct1" text="personal" />
+                  <Label id="Label1" text="label1" labelFor="input" required="true"/>
+                  <Input id="input1" placeholder="Enter the First Name" value="{EmployeeModel>/Employee/FName}" change="onChangeFname"
+                  valueState="{None}" valueStateText="{EmployeeModel>/EmployeeValueState/FName_VST}" />
+
+                  <Input id="input2" placeholder="Enter the last name" value="{EmployeeModel>/Employee/LName}" 
+                  valueState="{EmployeeModel>/EmployeeValueState/LName_VS}" valueStateText="{EmployeeModel>/EmployeeValueState/LName_VST}" />
+
+                  <Label id="Label2" text="Telephone" labelFor="number"/>
+                  <Input id="number" type="Tel" placeholder="Enter the mobile number" value="{EmployeeModel>/Employee/Telephone}" maxLength="10" change="onChangeTelephone">
+                  </Input>
+
+                  <Label id="Label3" text="Email" labelFor="mailid" required="true"/>
+                  <Input id="mailid"  type="Email" placeholder="Enter the mail id" value="{EmployeeModel>/Employee/Email}">
+                  </Input>
+
+                  <Label id="Label4" text="Gender" labelFor="rbg3"/>
+                  <RadioButtonGroup id="rbg3" columns="2" select="onSelectGender">
+                     <RadioButton id="rb1" text="Male"/>
+                     <RadioButton id="rb2" text="FeMale"/>
+                  </RadioButtonGroup>
+                  
+                   <core:Title id="ct2" text="Address"/>
+
+                  <Label id="Label5" text="pincode" labelFor="pincode"/>
+                  <Input id="pincode" placeholder="Enter the pincode" value="{EmployeeModel>/Employee/Pincode}"/>
+                  <Label id="Label6" text="HomeTown" labelFor="idHometown"/>
+                  <Input id="idHometown" placeholder="Enter the Hometown" value="{EmployeeModel>/Employee/Hometown}"/>
+                  <Label id="Label7" text="Landmark" labelFor="idLandmark"/>
+                  <Input id="idLandmark" placeholder="Enter the Landmark" value="{EmployeeModel>/Employee/Landmark}"/>
+            
+            </f:SimpleForm>
+        </VBox >    
+            <Table id="idProductsTable" items="{EmployeeModel>/EmployeeList}">
+                <columns>
+                <Column id="c1">
+                <Text id="t1" text="Employee id"/>
+                </Column>
+                <Column id="c2">
+                <Text id="t2" text="Employee Name"/>
+                </Column>
+                 <Column id="c3">
+                <Text id="t3" text="Email"/>
+                </Column>
+                 <Column id="c4">
+                <Text id="t4" text="Telephone"/>
+                </Column>
+                 <Column id="c5">
+                <Text id="t5" text="Gender"/>
+                </Column>
+                 <Column id="c6">
+                <Text id="t6" text="pincode"/>
+                </Column>
+                 <Column id="c7" >
+                <Text id="t7" text="HomeTown"/>
+                </Column>
+                 <Column id="c8">
+                <Text id="t8" text="Landmark"/>
+                </Column>
+                <Column id="c9">
+                <Text id="t9" text="Action"/>
+                </Column>
+                 </columns>
+                <items>
+                <ColumnListItem id="C1">
+                <cells>
+                <Text id="tt1" text="{EmployeeModel>Employee_Id}"></Text>
+                <!-- <Text id="text1" text="{EmployeeModel>FName} {EmployeeModel>LName} "></Text> -->
+                
+                <Text id="tt2"  text="{parts:[
+                                                 {path : 'EmployeeModel>FName'},
+                                                 {path : 'EmployeeModel>LName'},
+                                                 {path : 'EmployeeModel>Gender'}
+                                             ],
+                                             formatter : '.MyFormatter'
+                                    }"></Text>
+                <Text id="tt3" text="{EmployeeModel>Email}"></Text>
+                
+                <ObjectNumber id="tt5" number="{EmployeeModel>Telephone}" 
+                state="{
+                    path : 'EmployeeModel>Telephone',
+                    formatter : '.ValidateTelephone'
+                    }"/>
+                    <Text id="tt4" text="{EmployeeModel>Gender}"></Text>
+                    <Text id="tt6" text="{EmployeeModel>Pincode}"></Text>
+                    <Text id="tt7" text="{EmployeeModel>Hometown}"></Text>
+                    <Text id="tt8" text="{EmployeeModel>Landmark}"></Text>
+
+                    <Button id="idView" icon="sap-icon://show" press="onPressShow" tooltip="View" />
+                    
+                </cells>
+                </ColumnListItem>
+                </items>
+                </Table>
+                   <footer>
+                       <Toolbar id="_IDGenToolbar1">
+                       <ToolbarSpacer id="_IDGenToolbarSpacer1"/>
+                          <Button id="bt1" type="Emphasized" text="Save" press="onPressSave"/>
+                          <Button id="bt2" text="Clear" press="onPressClear"/>
+                       </Toolbar>
+                   </footer>
+
+
+                </Page>
+           
+        </App>
+
+    
+</mvc:View>

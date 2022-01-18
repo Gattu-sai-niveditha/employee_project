@@ -1,0 +1,39 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form"> 
+   <Dialog id="id1">
+           <customHeader>
+               <Bar id="idB1">
+                   <contentLeft>
+                        <Title id="idTitle" text="Employee Details"></Title>
+                   </contentLeft>
+                   <contentRight>
+                      <Button id="idDecline" icon="sap-icon://decline" press="onclose" tooltip="Close Dialog"></Button>
+                  </contentRight>
+                </Bar>
+           </customHeader>
+           <IconTabBar id="itb" class="sapUiResponsiveContentPadding" >
+                <items>
+                     <IconTabFilter id="ict1" icon="sap-icon://Employee" key="info" >
+                         <f:SimpleForm id="personal" >
+                         <f:content>
+                          <Label id="idp1" text="personal details"></Label>
+                          <Text id="idp2" text="{EmployeeModel>/DialogEmployeeDetails/Employee_id}"></Text>
+                         </f:content>
+                         </f:SimpleForm>
+                     </IconTabFilter>
+                       <IconTabFilter id="itb1" icon="sap-icon://functional-location" key="attachments">
+                          <f:SimpleForm id="sf" >
+                          <f:content>
+                          <Label id="idl1" text="address details"></Label>
+                           <Text id="tp1" text="{EmployeeModel>/DialogEmployeeDetails/pincode}"></Text>
+                           <Text id="tp2" text="{EmployeeModel>/DialogEmployeeDetails/HomeTown}"></Text>
+                           <Text id="tp3" text="{EmployeeModel>/DialogEmployeeDetails/Landmark}"></Text>
+                           </f:content>
+                           </f:SimpleForm>
+                       </IconTabFilter>
+                 </items>
+           </IconTabBar>
+              <buttons>
+                  <Button id="b1" text="Close" press="onclose" type="Emphasized"/>
+             </buttons>         
+     </Dialog>
+</core:FragmentDefinition>
